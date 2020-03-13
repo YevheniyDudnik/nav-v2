@@ -1,7 +1,7 @@
 {
-  "name": "navigation",
+  "name": "nav-2",
   "version": "1.0.0",
-  "description": "[Link](https://yevheniydudnik.github.io/Navigation/index.html)",
+  "description": "[Link](https://yevheniydudnik.github.io/nav-2/index.html)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,10 +21,10 @@
   "dependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/YevheniyDudnik/Navigation.git"
+    "url": "git+https://github.com/YevheniyDudnik/nav-2.git"
   },
   "bugs": {
-    "url": "https://github.com/YevheniyDudnik/Navigation/issues"
+    "url": "https://github.com/YevheniyDudnik/nav-2/issues"
   },
-  "homepage": "https://github.com/YevheniyDudnik/Navigation#readme"
+  "homepage": "https://github.com/YevheniyDudnik/nav-2#readme"
 }

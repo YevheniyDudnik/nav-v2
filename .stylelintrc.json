@@ -1,0 +1,12 @@
+{
+    "extends": ["stylelint-config-standard", "stylelint-config-recess-order"],
+    "ignoreFiles": ["sass/bootstrap.scss", "sass/font-awesome.scss", "sass/slick.scss", "sass/abstracts/_rem.scss", "sass/base/_normalize&reset.scss"],
+    "rules": {
+        "indentation": 4,
+        "at-rule-no-unknown": [true, {
+            "ignoreAtRules": ["include", "mixin"]
+        }],
+        "selector-list-comma-newline-after": null,
+        "number-leading-zero": "never"
+    }
+}

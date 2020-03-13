@@ -1,0 +1,262 @@
+@media all and (max-width: $max-screen-sm) {
+    .hamburger {
+        display: block;
+    }
+
+    .navigation {
+        display: none;
+    }
+
+    html {
+        &.mm-opening {
+            & .mm-slideout {
+                transform: translate3d(80%, 0, 0);
+            }
+
+            &.mm-columns {
+                &-0, &-1, &-2, &-3, &-4, &-5, &-6 {
+                    & .mm-slideout {
+                        transform: translate3d(80%, 0, 0);
+                    }
+                }
+            }
+        }
+
+        &.mm-right {
+            &.mm-opening {
+                & .mm-slideout {
+                    transform: translate3d(-80%, 0, 0);
+                }
+            }
+        }
+    }
+
+    .mm-menu {
+        @include rem(max-width, 288px);
+
+        color: $third-color;
+        background-color: $first-color;
+
+        & .mm-navbar {
+            & a, & > * {
+                color: $third-color;
+            }
+        }
+
+        & .mm-btn {
+            &::after, &::before {
+                border-color: $third-color;
+            }
+        }
+
+        & .mm-listview {
+            border-color: transparent;
+
+            & > li {
+                & a:not(.mm-next) {
+                    -webkit-tap-highlight-color: $second-color;
+                }
+
+                &.mm-selected {
+                    & > a:not(.mm-next), > span {
+                        background-color: $second-color;
+                    }
+                }
+
+                & .mm-arrow, & .mm-next {
+                    &::after {
+                        border-color: $third-color;
+                    }
+                }
+            }
+        }
+    }
+
+    .mm-navbar {
+        @include rem((
+            height: 51px,
+            padding: 0 51px,
+            line-height: 25.5px
+        ));
+
+        &-top {
+            &-1 {
+                top: 0;
+            }
+
+            &-2, &-3, &-4 {
+                @include rem(top, 51px);
+            }
+        }
+
+        &-bottom {
+            &-1 {
+                bottom: 0;
+            }
+
+            &-2, &-3, &-4 {
+                @include rem(bottom, 51px);
+            }
+        }
+
+        &-size {
+            &-2, &-3, &-4 {
+                @include rem(height, 51px);
+            }
+        }
+
+        &.mm-hasbtns {
+            @include rem(padding, 0 51px);
+        }
+
+        & > .mm-hasbtns {
+            padding: 0;
+        }
+
+        & > * {
+            @include rem(padding, 13px 0);
+        }
+
+        & .mm-btn {
+            &:first-child {
+                @include rem(padding-left, 25.5px);
+            }
+
+            &:last-child {
+                @include rem(padding-right, 25.5px);
+            }
+        }
+    }
+
+    .mm-btn {
+        @include rem((
+            width: 51px,
+            height: 51px
+        ));
+    }
+
+    .mm-hasnavbar {
+        &-top, &-bottom {
+            &-1, &-2, &-3, &-4 {
+                & .mm-panels {
+                    @include rem(top, 51px);
+                }
+            }
+        }
+    }
+
+    .mm-panels {
+        & > .mm-panel {
+            @include rem(padding, 0 25.5px);
+
+            &.mm-hasnavbar {
+                @include rem(padding-top, 51px);
+            }
+
+            &::after, &::before {
+                @include rem(height, 25.5px);
+            }
+
+            & > .mm-listview {
+                @include rem(margin, 25.5px -25.5px);
+
+                &:first-child {
+                    @include rem(margin-top, -25.5px)
+                }
+            }
+
+            & > .mm-navbar {
+                & + .mm-listview {
+                    @include rem(margin-top, -25.5px);
+                }
+            }
+        }
+    }
+
+    .mm-listview {
+        @include rem((
+            font-size: 15px,
+            line-height: 25.5px
+        ));
+
+        & > li {
+            & > a, & > span {
+                @include rem(padding, 18px 27px);
+            }
+        }
+
+        & .mm-next {
+            @include rem(width, 51px);
+
+            & + a, & + span {
+                @include rem(margin-right, 51px);
+            }
+        }
+    }
+}
+
+@media all and (max-width: 175px) {
+    html {
+        &.mm-opening {
+            & .mm-slideout {
+                transform: translate3d(140px, 0, 0);
+            }
+
+            &.mm-columns {
+                &-0, &-1, &-2, &-3, &-4, &-5, &-6 {
+                    & .mm-slideout {
+                        transform: translate3d(140px, 0, 0);
+                    }
+                }
+            }
+        }
+
+        &.mm-right {
+            &.mm-opening {
+                & .mm-slideout {
+                    transform: translate3d(-140px, 0, 0);
+                }
+            }
+        }
+    }
+}
+
+@media all and (min-width: 288px) {
+    html {
+        &.mm-opening {
+            & .mm-slideout {
+                transform: translate3d(288px, 0, 0);
+            }
+
+            &.mm-columns {
+                &-0, &-1, &-2, &-3, &-4, &-5, &-6 {
+                    & .mm-slideout {
+                        transform: translate3d(288px, 0, 0);
+                    }
+                }
+            }
+        }
+
+        &.mm-right {
+            &.mm-opening {
+                & .mm-slideout {
+                    transform: translate3d(-288px, 0, 0);
+                }
+            }
+        }
+    }
+}
+
+@media all and (min-width: 0) {
+    html {
+        &.mm-opening {
+            &.mm-columns {
+                &-0 {
+                    & .mm-slideout {
+                        transform: translate3d(0, 0, 0);
+                    }
+                }
+            }
+        }
+    }
+}

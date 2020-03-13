@@ -1,0 +1,264 @@
+@media all and (min-width: $screen-md) {
+    .hamburger {
+        display: none;
+    }
+
+    .navigation {
+        display: flex;
+        width: 100%;
+        max-width: 1140px;
+        margin: 0 auto;
+        background-color: $third-color;
+
+        &__list {
+            @include rem(padding, 0 11px);
+
+            display: flex;
+            flex-grow: 1;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+            &--sub {
+                flex-grow: 1;
+            }
+        }
+
+        &__link {
+            color: $first-color;
+            transition: color .5s ease;
+        }
+
+        &__item {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+
+            &.has-child {
+                height: 100%;
+
+                & > .navigation__link {
+                    @include rem(padding-right, 25px);
+
+                    &::before {
+                        @include rem((
+                            border-width: 8px 5px 0 5px,
+                            right: 9px
+                        ));
+
+                        position: absolute;
+                        top: 40%;
+                        width: 0;
+                        height: 0;
+                        cursor: pointer;
+                        content: "";
+                        border-color: $second-color transparent transparent transparent;
+                        border-style: solid;
+                    }
+                }
+
+                & .sublevel {
+                    &-1 {
+                        @include rem(width, 288px);
+
+                        position: absolute;
+                        top: 100%;
+                        display: flex;
+                        height: 0;
+                        opacity: 0;
+                        transition: height .5s ease, opacity .5s ease, transform .5s ease;
+                        transform: translateY(0);
+
+                        & .has-child {
+                            transition: height .5s ease;
+
+                            & > .navigation__link {
+                                margin-right: 51px;
+                            }
+
+                            &:hover {
+                                & .navigation__link {
+                                    &::after {
+                                        display: none;
+                                    }
+                                }
+                            }
+                        }
+
+                        & .navigation__link {
+                            @include rem(padding, 0 27px);
+
+                            position: relative;
+                            z-index: 3;
+                            height: 0;
+                            color: $third-color;
+                            background-color: $first-color;
+                            transition: padding .5s ease, height .5s ease, background-color .5s ease;
+
+                            &::before {
+                                display: none;
+                            }
+
+                            &:hover {
+                                background-color: $second-color;
+
+                                &::after {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+
+                    &-2 {
+                        @include rem(height, 51px);
+
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        left: 0;
+                        z-index: 2;
+                        height: 100%;
+                        cursor: pointer;
+                        background-color: $first-color;
+                        transition: background-color .5s ease, height .5s ease;
+
+                        &::after {
+                            @include rem((
+                                top: 17px,
+                                right: 17px,
+                                width: 16px,
+                                height: 16px
+                            ));
+
+                            position: absolute;
+                            display: block;
+                            font-family: 'Font Awesome 5 Free';
+                            font-style: normal;
+                            font-weight: 900;
+                            font-variant: normal;
+                            line-height: 1;
+                            color: $third-color;
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            content: "\f067";
+                            text-rendering: auto;
+                            border: 0;
+                            transition: content .5s ease;
+                        }
+
+                        &:hover {
+                            height: max-content;
+                            background-color: $second-color;
+
+                            &::after {
+                                content: "\f068";
+                            }
+
+                            & .navigation__list--sub {
+                                height: max-content;
+                                opacity: 1;
+                            }
+                        }
+
+                        & .navigation__list--sub {
+                            height: 0;
+                            background-color: $second-color;
+                            opacity: 0;
+                            transition: height .5s ease, opacity .5s ease, transform .5s ease;
+                            transform: translateY(51px);
+
+                            & .navigation__link {
+                                background-color: transparent;
+
+                                &:hover {
+                                    background-color: $first-color;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &:hover {
+                & > .navigation__link {
+                    color: $second-color;
+
+                    &::after {
+                        @include rem(height, 3px);
+
+                        position: absolute;
+                        right: 0;
+                        bottom: 0;
+                        left: 0;
+                        display: block;
+                        width: 100%;
+                        margin: 0 auto;
+                        content: '';
+                        background-color: $second-color;
+                        animation: line .5s ease;
+
+                        @keyframes line {
+                            0% {
+                                width: 0;
+                                opacity: 0;
+                            }
+
+                            100% {
+                                width: 100%;
+                                opacity: 1;
+                            }
+                        }
+                    }
+                }
+
+                &.has-child {
+                    & .sublevel {
+                        &-1 {
+                            height: 100%;
+                            opacity: 1;
+
+                            & .navigation__link {
+                                @include rem(padding, 18px 27px);
+
+                                height: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.active {
+                & > .navigation__link {
+                    color: $second-color;
+
+                    &::after {
+                        @include rem(height, 3px);
+
+                        position: absolute;
+                        right: 0;
+                        bottom: 0;
+                        left: 0;
+                        display: block;
+                        width: 100%;
+                        margin: 0 auto;
+                        content: '';
+                        background-color: $second-color;
+                        animation: line .5s ease;
+
+                        @keyframes line {
+                            0% {
+                                width: 0;
+                                opacity: 0;
+                            }
+
+                            100% {
+                                width: 100%;
+                                opacity: 1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -31,13 +31,13 @@ function navigationSublevelWrap(list, subnavClass) {
                     var elemParent = $(this).closest('li');
 
                     elemParent.addClass(options.openCloseClass).children('div').addClass(options.slideClass);
-                    createBlock('<span>', options.openerClass, elemParent);
+                    createBlock('<span>', options.openerClass, elemParent.children('a'));
                 });
             }
         });
         
         function createBlock(element, className, place) {
-            $(element).addClass(className).prependTo(place);
+            $(element).addClass(className).appendTo(place);
         }
     };
 })(jQuery);
@@ -56,7 +56,7 @@ function navigationSublevelWrap(list, subnavClass) {
             activeClass:'active',
             opener:'.opener',
             slider:'.slide',
-            animSpeed: 300,
+            animSpeed: 500,
             collapsible: true,
             closeInactive: false,
             event:'click'
@@ -106,12 +106,12 @@ function navigationSublevelWrap(list, subnavClass) {
     };
 
     // accordion slide visibility
-    // var showSlide = function(slide) {
-    //     return slide.css({position: '', top: '', left: '', width: '',});
-    // };
-    // var hideSlide = function(slide) {
-    //     return slide.show().css({position: 'absolute', top: -9999, left: -9999, width: slide.width(),});
-    // };
+    var showSlide = function(slide) {
+        return slide.css({position: '', top: '', left: '', width: '',});
+    };
+    var hideSlide = function(slide) {
+        return slide.show().css({position: 'absolute', top: -9999, left: -9999, width: slide.width(),});
+    };
 })(jQuery);
 
 // check if drop down fits in main parent container, and add class if it doesn't

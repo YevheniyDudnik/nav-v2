@@ -34,8 +34,6 @@
             flex-direction: column;
 
             &.has-child {
-                height: 100%;
-
                 & > .navigation__link {
                     @include rem(padding-right, 25px);
 
@@ -68,30 +66,12 @@
                         transition: height .5s ease, opacity .5s ease, transform .5s ease;
                         transform: translateY(0);
 
-                        & .has-child {
-                            transition: height .5s ease;
-
-                            & > .navigation__link {
-                                margin-right: 51px;
-                            }
-
-                            &:hover {
-                                & .navigation__link {
-                                    &::after {
-                                        display: none;
-                                    }
-                                }
-                            }
-                        }
-
                         & .navigation__link {
                             @include rem(padding, 0 27px);
 
-                            position: relative;
-                            z-index: 3;
                             height: 0;
                             color: $third-color;
-                            background-color: $first-color;
+                            background-color: $background-color-first-color-and-opacity;
                             transition: padding .5s ease, height .5s ease, background-color .5s ease;
 
                             &::before {
@@ -106,73 +86,88 @@
                                 }
                             }
                         }
+
+                        & .open-close {
+                            transition: height .5s ease;
+
+                            &--active {
+                                & > .navigation__link {
+                                    & > .opener {
+                                        @include rem(height, 51px !important);
+
+                                        background-color: $second-color !important;
+
+                                        &::after {
+                                            content: "\f068" !important;
+                                        }
+                                    }
+                                }
+                            }
+
+                            & > .navigation__link {
+                                margin-right: 51px;
+
+                                & > .opener {
+                                    @include rem(width, 51px);
+
+                                    position: absolute;
+                                    top: 0;
+                                    right: 0;
+                                    z-index: 2;
+                                    height: 100%;
+                                    background-color: $background-color-first-color-and-opacity;
+                                    transition: background-color .5s ease, height .5s ease;
+
+                                    &::after {
+                                        @include rem((
+                                            top: 17px,
+                                            right: 17px,
+                                            width: 16px,
+                                            height: 16px
+                                        ));
+
+                                        position: absolute;
+                                        display: block;
+                                        font-family: 'Font Awesome 5 Free';
+                                        font-style: normal;
+                                        font-weight: 900;
+                                        font-variant: normal;
+                                        line-height: 1;
+                                        color: $third-color;
+                                        -moz-osx-font-smoothing: grayscale;
+                                        -webkit-font-smoothing: antialiased;
+                                        content: "\f067";
+                                        text-rendering: auto;
+                                        border: 0;
+                                        transition: content .5s ease;
+                                    }
+
+                                    &:hover, &:focus, &:active {
+                                        background-color: $second-color;
+
+                                        &::after {
+                                            content: "\f068";
+                                        }
+                                    }
+                                }
+                            }
+
+                            &:hover {
+                                & .navigation__link {
+                                    &::after {
+                                        display: none;
+                                    }
+                                }
+                            }
+                        }
                     }
 
                     &-2 {
-                        @include rem(height, 51px);
-
-                        position: absolute;
-                        top: 0;
-                        right: 0;
-                        bottom: 0;
-                        left: 0;
-                        z-index: 2;
-                        height: 100%;
-                        cursor: pointer;
-                        background-color: $first-color;
-                        transition: background-color .5s ease, height .5s ease;
-
-                        &::after {
-                            @include rem((
-                                top: 17px,
-                                right: 17px,
-                                width: 16px,
-                                height: 16px
-                            ));
-
-                            position: absolute;
-                            display: block;
-                            font-family: 'Font Awesome 5 Free';
-                            font-style: normal;
-                            font-weight: 900;
-                            font-variant: normal;
-                            line-height: 1;
-                            color: $third-color;
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
-                            content: "\f067";
-                            text-rendering: auto;
-                            border: 0;
-                            transition: content .5s ease;
-                        }
-
-                        &:hover {
-                            height: max-content;
+                        & .navigation__link {
                             background-color: $second-color;
 
-                            &::after {
-                                content: "\f068";
-                            }
-
-                            & .navigation__list--sub {
-                                height: max-content;
-                                opacity: 1;
-                            }
-                        }
-
-                        & .navigation__list--sub {
-                            height: 0;
-                            background-color: $second-color;
-                            opacity: 0;
-                            transition: height .5s ease, opacity .5s ease, transform .5s ease;
-                            transform: translateY(51px);
-
-                            & .navigation__link {
-                                background-color: transparent;
-
-                                &:hover {
-                                    background-color: $first-color;
-                                }
+                            &:hover {
+                                background-color: $background-color-first-color-and-opacity;
                             }
                         }
                     }

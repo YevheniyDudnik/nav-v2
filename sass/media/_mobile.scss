@@ -35,7 +35,6 @@
         @include rem(max-width, 288px);
 
         color: $third-color;
-        background-color: $first-color;
 
         & .mm-navbar {
             & a, & > * {
@@ -53,15 +52,15 @@
             border-color: transparent;
 
             & > li {
-                & a:not(.mm-next) {
-                    -webkit-tap-highlight-color: $second-color;
-                }
+                // & a:not(.mm-next) {
+                //     -webkit-tap-highlight-color: $second-color;
+                // }
 
-                &.mm-selected {
-                    & > a:not(.mm-next), > span {
-                        background-color: $second-color;
-                    }
-                }
+                // &.mm-selected {
+                //     & > a:not(.mm-next), > span {
+                //         background-color: $second-color;
+                //     }
+                // }
 
                 & .mm-arrow, & .mm-next {
                     &::after {
@@ -80,6 +79,8 @@
         ));
 
         &-top {
+            background-color: $background-color-first-color-and-opacity;
+
             &-1 {
                 top: 0;
             }
@@ -169,6 +170,70 @@
                 & + .mm-listview {
                     @include rem(margin-top, -25.5px);
                 }
+            }
+        }
+    }
+
+    .mm-panel {
+        background-color: $background-color-first-color-and-opacity;
+
+        &.mm-subopened {
+            visibility: hidden;
+        }
+
+        & .mm-listview {
+            & > li {
+                & a:not(.mm-next) {
+                    -webkit-tap-highlight-color: $second-color;
+                }
+
+                &.mm-selected {
+                    & > a:not(.mm-next), > span {
+                        background-color: $second-color;
+                    }
+                }
+            }
+        }
+
+        & .navigation__item {
+            & > a, & > span {
+                transition: background-color .5s ease;
+
+                &:hover {
+                    background-color: $second-color;
+                }
+            }
+        }
+
+        &.sublevel {
+            &-1 {
+                background-color: $second-color;
+
+                & .navigation__item {
+                    & > a, & > span {
+                        &:hover {
+                            background-color: $background-color-first-color-and-opacity;
+                        }
+                    }
+                }
+
+                & .mm-listview {
+                    & > li {
+                        & a:not(.mm-next) {
+                            -webkit-tap-highlight-color: $background-color-first-color-and-opacity;
+                        }
+
+                        &.mm-selected {
+                            & > a:not(.mm-next), > span {
+                                background-color: $background-color-first-color-and-opacity;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &-2 {
+                background-color: $background-color-first-color-and-opacity;
             }
         }
     }

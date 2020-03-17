@@ -50,7 +50,7 @@
 .mm-panels,
 .mm-panels > .mm-panel {
     position: absolute;
-    background: inherit;
+    // background: inherit;
     border-color: inherit;
 }
 
@@ -64,10 +64,10 @@
 }
 
 .mm-panel {
-    -webkit-transition: -webkit-transform .4s ease;
-    transition: -webkit-transform .4s ease;
-    transition: transform .4s ease;
-    transition: transform .4s ease, -webkit-transform .4s ease;
+    -webkit-transition: -webkit-transform .4s ease, visibility .4s ease;
+    transition: -webkit-transform .4s ease, visibility .4s ease;
+    transition: transform .4s ease, visibility .4s ease;
+    transition: transform .4s ease, -webkit-transform .4s ease, visibility .4s ease;
     -webkit-transform: translate3d(100%, 0, 0);
     transform: translate3d(100%, 0, 0);
 }
@@ -1042,7 +1042,7 @@ html.mm-dropdown.mm-opened:not(.mm-opening) .mm-menu {
 .mm-menu > .mm-navbar {
     z-index: 3;
     // padding: 0;
-    background: inherit;
+    // background: inherit;
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
 }

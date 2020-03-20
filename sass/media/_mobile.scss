@@ -1,5 +1,7 @@
 @media all and (max-width: $max-screen-sm) {
     .hamburger {
+        @include transition(height visibility opacity);
+
         display: block;
     }
 
@@ -19,6 +21,12 @@
                         transform: translate3d(80%, 0, 0);
                     }
                 }
+            }
+
+            & .hamburger {
+                height: 0;
+                visibility: hidden;
+                opacity: 0;
             }
         }
 
@@ -52,16 +60,6 @@
             border-color: transparent;
 
             & > li {
-                // & a:not(.mm-next) {
-                //     -webkit-tap-highlight-color: $second-color;
-                // }
-
-                // &.mm-selected {
-                //     & > a:not(.mm-next), > span {
-                //         background-color: $second-color;
-                //     }
-                // }
-
                 & .mm-arrow, & .mm-next {
                     &::after {
                         border-color: $third-color;
@@ -73,14 +71,12 @@
 
     .mm-navbar {
         @include rem((
-            height: 51px,
+            // height: 51px, //TODO
             padding: 0 51px,
             line-height: 25.5px
         ));
 
         &-top {
-            background-color: $background-color-first-color-and-opacity;
-
             &-1 {
                 top: 0;
             }
@@ -136,16 +132,6 @@
         ));
     }
 
-    .mm-hasnavbar {
-        &-top, &-bottom {
-            &-1, &-2, &-3, &-4 {
-                & .mm-panels {
-                    @include rem(top, 51px);
-                }
-            }
-        }
-    }
-
     .mm-panels {
         & > .mm-panel {
             @include rem(padding, 0 25.5px);
@@ -197,7 +183,7 @@
 
         & .navigation__item {
             & > a, & > span {
-                transition: background-color .5s ease;
+                @include transition(background-color);
 
                 &:hover {
                     background-color: $second-color;

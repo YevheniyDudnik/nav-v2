@@ -1,5 +1,5 @@
 .navigation {
-    transition: box-shadow .5s ease;
+    @include transition(box-shadow);
 
     &:hover {
         box-shadow: 0 0 3px $box-shadow-navigation-hover;

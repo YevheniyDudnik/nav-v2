@@ -24,8 +24,9 @@
         }
 
         &__link {
+            @include transition(color);
+
             color: $first-color;
-            transition: color .5s ease;
         }
 
         &__item {
@@ -57,38 +58,42 @@
                 & .sublevel {
                     &-1 {
                         @include rem(width, 288px);
+                        @include transition(height opacity transform);
 
                         position: absolute;
                         top: 100%;
                         display: flex;
                         height: 0;
                         opacity: 0;
-                        transition: height .5s ease, opacity .5s ease, transform .5s ease;
                         transform: translateY(0);
 
-                        & .navigation__link {
-                            @include rem(padding, 0 27px);
-
-                            height: 0;
-                            color: $third-color;
-                            background-color: $background-color-first-color-and-opacity;
-                            transition: padding .5s ease, height .5s ease, background-color .5s ease;
-
-                            &::before {
-                                display: none;
-                            }
-
-                            &:hover {
-                                background-color: $second-color;
-
-                                &::after {
-                                    display: none;
+                        & .navigation__item {
+                            &.active {
+                                & > .navigation__link {
+                                    background-color: $second-color;
                                 }
                             }
                         }
 
+                        & .navigation__link {
+                            @include rem(padding, 0 27px);
+                            @include transition(padding height background-color);
+
+                            height: 0;
+                            color: $third-color;
+                            background-color: $background-color-first-color-and-opacity;
+
+                            &:hover {
+                                background-color: $second-color;
+                            }
+
+                            &::before, &::after {
+                                display: none;
+                            }
+                        }
+
                         & .open-close {
-                            transition: height .5s ease;
+                            @include transition(height);
 
                             &--active {
                                 & > .navigation__link {
@@ -109,6 +114,7 @@
 
                                 & > .opener {
                                     @include rem(width, 51px);
+                                    @include transition(background-color);
 
                                     position: absolute;
                                     top: 0;
@@ -116,38 +122,25 @@
                                     z-index: 2;
                                     height: 100%;
                                     background-color: $background-color-first-color-and-opacity;
-                                    transition: background-color .5s ease, height .5s ease;
 
                                     &::after {
                                         @include rem((
-                                            top: 17px,
-                                            right: 17px,
-                                            width: 16px,
-                                            height: 16px
+                                            top: 18px,
+                                            right: 18px,
+                                            font: normal normal 900 16px/1 'Font Awesome 5 Free'
                                         ));
+                                        @include transition(content);
 
                                         position: absolute;
                                         display: block;
-                                        font-family: 'Font Awesome 5 Free';
-                                        font-style: normal;
-                                        font-weight: 900;
-                                        font-variant: normal;
-                                        line-height: 1;
                                         color: $third-color;
-                                        -moz-osx-font-smoothing: grayscale;
-                                        -webkit-font-smoothing: antialiased;
                                         content: "\f067";
                                         text-rendering: auto;
                                         border: 0;
-                                        transition: content .5s ease;
                                     }
 
-                                    &:hover, &:focus, &:active {
+                                    &:hover {
                                         background-color: $second-color;
-
-                                        &::after {
-                                            content: "\f068";
-                                        }
                                     }
                                 }
                             }
@@ -163,6 +156,14 @@
                     }
 
                     &-2 {
+                        & .navigation__item {
+                            &.active {
+                                & > .navigation__link {
+                                    background-color: $background-color-first-color-and-opacity;
+                                }
+                            }
+                        }
+
                         & .navigation__link {
                             background-color: $second-color;
 

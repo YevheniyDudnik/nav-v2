@@ -138,6 +138,12 @@
 
             &.mm-hasnavbar {
                 @include rem(padding-top, 51px);
+
+                & .mm-navbar {
+                    & > .mm-title {
+                        display: none;
+                    }
+                }
             }
 
             &::after, &::before {

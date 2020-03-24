@@ -791,6 +791,9 @@ a {
         padding-top: 51px;
         padding-top: 3.1875rem;
     }
+    .mm-panels > .mm-panel.mm-hasnavbar .mm-navbar > .mm-title {
+        display: none;
+    }
     .mm-panels > .mm-panel::after, .mm-panels > .mm-panel::before {
         height: 25.5px;
         height: 1.59375rem;

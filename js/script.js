@@ -1,5 +1,6 @@
 $(document).ready(function() {
     initNavigation();
+    mmClose();
 });
 
 $(window).resize(function(){
@@ -31,7 +32,8 @@ function initNavigation() {
             {
                 position: 'top',
                 content: [
-                    'close'
+                    'close',
+                    'title'
                 ]
             }
         ]
@@ -58,4 +60,11 @@ function displayNavigationMobile() {
             $(navigationMobile).data('mmenu').close();
         };
     };
+}
+
+function mmClose() {
+    let menuApi = $('#navigation--mobile').data('mmenu');
+	$('.mm-close').click(function() {
+        menuApi.close();
+    });
 }
